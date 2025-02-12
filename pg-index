@@ -1,6 +1,16 @@
+创建向量索引
+使用 GiST 索引
+
+对于非地理空间数据，可以使用 gist 索引类型。例如，如果你想在多个列上创建一个 GiST 索引，可以使用 CREATE INDEX 命令并指定 gist 作为索引方法。
+
+CREATE INDEX idx_vector ON your_table USING gist (vector_column);
+
+这里 vector_column 应该是一个包含多个值的数组或某种复合类型。例如，你可以创建一个包含多个整数的数组：
+
+CREATE INDEX idx_vector ON your_table USING gist ((array[col1, col2, col3]));
+
 
 postgresql 索引
-
 在 PostgreSQL 中，索引是一种数据结构，它可以帮助数据库更快地查询和检索数据。通过在表的列上创建索引，可以提高查询效率，尤其是在处理大量数据的表时。PostgreSQL 支持多种类型的索引，每种类型适用于不同的查询模式和性能需求。
 常见的 PostgreSQL 索引类型
 
